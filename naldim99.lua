@@ -4,14 +4,14 @@
 ██║   ██║██║   ██║██║██║  ██║██║ █╗ ██║███████║██████╔╝█████╗  
 ╚██╗ ██╔╝██║   ██║██║██║  ██║██║███╗██║██╔══██║██╔═══╝ ██╔══╝  
  ╚████╔╝ ╚██████╔╝██║██████╔╝╚███╔███╔╝██║  ██║██║     ███████╗
-  ╚═══╝   ╚═════╝ ╚═╝╚═════╝  ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝     ╚════���═╝
+  ╚═══╝   ╚═════╝ ╚═╝╚═════╝  ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝     ╚══════╝
 
                 🚀 NALDIM99 — 99 Nights In The Forest 🚀
 ----------------------------------------------------------------------------
   IMPORTANTE:
-  Você deve copiar e usar o SCRIPT COMPLETO abaixo. NÃO clique no link.
+  Você deve copiar e usar o SCRIPT COMPLETO abaixo.
 
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/loader.lua", true))()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/edinaldodasilvanogueira9-netizen/Naldim-99/main/naldim99.lua", true))()
 
 ----------------------------------------------------------------------------
 ]]
@@ -104,14 +104,14 @@ local Textos = {
 	["PT-BR"] = {
 		titulo = "Naldim99 | 99 Noites na Floresta",
 		lobby_msg = "Entre no jogo para carregar o Naldim99 :D [Você está no saguão atualmente]",
-		aviso_executor = "Seu executor atual não suporta a versão mais recente do script!",
-		mais_info = "Para mais informações, consulte a documentação do script"
+		carregado = "Naldim99 carregado com sucesso!",
+		idioma = "Português-BR ativado"
 	},
 	["EN"] = {
 		titulo = "Naldim99 | 99 Nights In The Forest",
 		lobby_msg = "Go In Game for Naldim99 to load :D [You are in lobby currently]",
-		aviso_executor = "Your executor currently doesn't support the newest version of the script!",
-		mais_info = "For more information, check the script documentation"
+		carregado = "Naldim99 loaded successfully!",
+		idioma = "English activated"
 	}
 }
 
@@ -183,6 +183,13 @@ task.spawn(function()
     end)
 end)
 
-local commit = shared.CustomCommit and tostring(shared.CustomCommit) or shared.StagingMode and "staging" or "3f69683b400710b2dc234dd0a5454e40eccae108"
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/"..tostring(commit).."/newnightsintheforest.lua", true))()
+-- Script carregado com sucesso
+task.spawn(function()
+    pcall(function()
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = Textos[IDIOMA].titulo,
+            Text = Textos[IDIOMA].carregado,
+            Duration = 5
+        })
+    end)
+end)
