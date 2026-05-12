@@ -104,14 +104,12 @@ local Textos = {
 	["PT-BR"] = {
 		titulo = "Naldim99 | 99 Noites na Floresta",
 		lobby_msg = "Entre no jogo para carregar o Naldim99 :D [Você está no saguão atualmente]",
-		carregado = "Naldim99 carregado com sucesso!",
-		idioma = "Português-BR ativado"
+		carregado = "Naldim99 carregado com sucesso!"
 	},
 	["EN"] = {
 		titulo = "Naldim99 | 99 Nights In The Forest",
 		lobby_msg = "Go In Game for Naldim99 to load :D [You are in lobby currently]",
-		carregado = "Naldim99 loaded successfully!",
-		idioma = "English activated"
+		carregado = "Naldim99 loaded successfully!"
 	}
 }
 
@@ -183,13 +181,7 @@ task.spawn(function()
     end)
 end)
 
--- Script carregado com sucesso
-task.spawn(function()
-    pcall(function()
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = Textos[IDIOMA].titulo,
-            Text = Textos[IDIOMA].carregado,
-            Duration = 5
-        })
-    end)
-end)
+local commit = shared.CustomCommit and tostring(shared.CustomCommit) or shared.StagingMode and "staging" or "3f69683b400710b2dc234dd0a5454e40eccae108"
+
+-- Carrega todas as funcionalidades do Voidware com o nome NALDIM99
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/"..tostring(commit).."/newnightsintheforest.lua", true))()
